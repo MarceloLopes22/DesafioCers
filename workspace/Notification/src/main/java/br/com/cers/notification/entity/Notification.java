@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "notification", schema = "cers")
@@ -43,9 +44,11 @@ public class Notification implements Serializable {
 	private String description;
 
 	@Column(columnDefinition = "date_publication")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate date_publication;
 
 	@Column(columnDefinition = "date_visualization")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate date_visualization;
 
 	public Notification() {

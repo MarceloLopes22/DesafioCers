@@ -1,0 +1,70 @@
+<div class="col-md-6" style="margin-left: 0%">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                 <h3 class="box-title">Formulario de Aviso</h3>
+            </div>
+            <form class="form-horizontal" #form="ngForm" (ngSubmit)="save()">
+                <div [ngClass]="classCss" role="alert" *ngIf="menssage">
+                    <strong>{{menssage.text}}</strong>
+                </div>
+                <div class="box-body">
+                    <div [ngClass]="getFormGroupClass(title.invalid, title.dirty)">
+                        <label for="inputTitulo" class="col-sm-2 control-label">Titulo</label>
+                        <div class="col-sm-10">
+                            <input 
+                                type="text" 
+                                [(ngModel)]="notification.title"
+                                class="form-control" 
+                                id="inputTitulo" 
+                                name="title"
+                                #title="ngModel"
+                                placeholder="Titulo"
+                                required>
+                            <span class="help-block" *ngIf="title.invalid && title.dirty">
+                                Titulo está invalido.
+                            </span>
+                        </div>
+                    </div>
+    
+                    <div [ngClass]="getFormGroupClass(description.invalid, description.dirty)">
+                        <label for="inputDescription" class="col-sm-2 control-label">Descrição</label>
+                        <div class="col-sm-10">
+                            <textarea 
+                                type="number" 
+                                [(ngModel)]="notification.description"
+                                class="form-control" 
+                                id="inputDescription" 
+                                name="description"
+                                #description="ngModel"
+                                placeholder="Descrição" required></textarea>
+                            <span class="help-block" *ngIf="description.invalid && description.dirty">
+                                Descrição está invalida.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div [ngClass]="getFormGroupClass(date_publication.invalid, date_publication.dirty)" style="margin-bottom: 0;padding-top: 7px;">
+                        <label for="inputDatePublication" class="col-sm-3 control-label">publicação:</label>
+                        <div class="input-group date col-sm-4">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input 
+                                type="date" 
+                                [(ngModel)]="notification.date_publication"
+                                class="form-control pull-right" 
+                                id="datepicker" 
+                                name="date_publication"
+                                #date_publication="ngModel">
+                            <span class="help-block" *ngIf="description.invalid && description.dirty">
+                                Data de publicação está invalida.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right">Salvar</button>
+                </div>
+            </form>
+    </div>
+</div>

@@ -30,7 +30,7 @@ public class NotificationController {
 	private NotificationService notificationService;
 	
 	@PostMapping
-	public ResponseEntity<Response<Notification>> criar(HttpServletRequest request, @RequestBody Notification notification,
+	public ResponseEntity<Response<Notification>> create(HttpServletRequest request, @RequestBody Notification notification,
 			BindingResult result) {
 		Response<Notification> response = new Response<Notification>();
 
@@ -42,7 +42,7 @@ public class NotificationController {
 			}
 			
 			Notification newNotification = notificationService.createOrUpdate(notification);
-			response.setDado(newNotification);
+			response.setData(newNotification);
 
 		} catch (Exception e) {
 			response.getErros().add(e.getMessage());
@@ -62,7 +62,7 @@ public class NotificationController {
 	}
 	
 	@PutMapping
-	public ResponseEntity<Response<Notification>> atualizar(HttpServletRequest request, @RequestBody Notification notification,
+	public ResponseEntity<Response<Notification>> update(HttpServletRequest request, @RequestBody Notification notification,
 			BindingResult result) {
 		Response<Notification> response = new Response<Notification>();
 
@@ -75,7 +75,7 @@ public class NotificationController {
 			}
 			
 			Notification notificationUpdated = notificationService.createOrUpdate(notification);
-			response.setDado(notificationUpdated);
+			response.setData(notificationUpdated);
 
 		} catch (Exception e) {
 			response.getErros().add(e.getMessage());
@@ -101,7 +101,7 @@ public class NotificationController {
 			response.getErros().add("Notification not found. Idnotification = " + idNotification);
 			ResponseEntity.badRequest().body(response);
 		}
-		response.setDado(notification);
+		response.setData(notification);
 		return ResponseEntity.ok().body(response);
 	}
 	
@@ -125,7 +125,7 @@ public class NotificationController {
 			@PathVariable("count") int count) {
 		Response<Page<Notification>> response = new Response<Page<Notification>>();
 		Page<Notification> notification = notificationService.findAll(page, count);
-		response.setDado(notification);
+		response.setData(notification);
 		return ResponseEntity.ok().body(response);
 	}
 }

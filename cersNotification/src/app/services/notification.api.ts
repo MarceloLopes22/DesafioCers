@@ -1,0 +1,1 @@
+export const NOTIFICATION_API: string = "http://localhost:8080";

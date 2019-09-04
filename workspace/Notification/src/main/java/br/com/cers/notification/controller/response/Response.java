@@ -5,16 +5,16 @@ import java.util.List;
 
 public class Response<T> {
 	
-	private T dado;
+	private T data;
 
 	private List<String> erros;
 
-	public T getDado() {
-		return dado;
+	public T getData() {
+		return data;
 	}
 
-	public void setDado(T dado) {
-		this.dado = dado;
+	public void setData(T data) {
+		this.data = data;
 	}
 
 	public List<String> getErros() {
